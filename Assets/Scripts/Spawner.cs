@@ -1,12 +1,10 @@
-using System;
-using System.Collections;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
     public GameObject objectToSpawn;
     public float spawnInterval;
-    private float timer;
+    public float maxOffset = 4.5f;
 
     private void Start()
     {
@@ -15,6 +13,8 @@ public class Spawner : MonoBehaviour
 
     void Spawn()
     {
-        Instantiate(objectToSpawn, transform.position, Quaternion.identity);
+        var offset = new Vector3();
+        offset.y = Random.Range(-maxOffset, maxOffset);
+        Instantiate(objectToSpawn, transform.position + offset, Quaternion.identity);
     }
 }
