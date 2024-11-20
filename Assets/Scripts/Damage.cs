@@ -5,6 +5,7 @@ public class Damage : MonoBehaviour
 {
     public bool onExit;
     public bool onEnter;
+    public bool canKill;
     public string[] tagsToDamage;
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -23,12 +24,25 @@ public class Damage : MonoBehaviour
         {
             if (other.attachedRigidbody != null)
             {
-                Destroy(other.attachedRigidbody.gameObject);
+                KillOrDestroy(other.attachedRigidbody.gameObject);
             }
             else
             {
-                Destroy(other.gameObject);
+                KillOrDestroy(other.gameObject);
             }            
         }        
+    }
+    
+    void KillOrDestroy(GameObject objectToKill)
+    {
+        var deathCtrl = objectToKill?.GetComponent<DeathManager>();
+        if (canKill && deathCtrl)
+        {
+            deathCtrl.Kill();
+        }
+        else
+        {
+            Destroy(objectToKill);
+        }
     }
 }
