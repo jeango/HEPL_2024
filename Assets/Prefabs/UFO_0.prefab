@@ -203,6 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onExit: 0
   onEnter: 1
+  canKill: 1
   tagsToDamage:
   - Player
 --- !u!114 &7935299166529689924
@@ -218,3 +219,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffect: {fileID: 4116615593131900154, guid: 067844a11e8224f6299504b04b3e0b92, type: 3}
+  scoreOnDeath: 10
